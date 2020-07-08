@@ -1,0 +1,22 @@
+{
+	"name": "fcc-learn-npm-package-json",
+  "author":"Adarsh",
+  "description":"This is a free code camp project",
+  "license":"MIT",
+  "version":"1.0.0",
+  "keywords":["freecodecamp","repo","javascript"],
+	"dependencies": {
+		"express": "^4.14.0"
+	},
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": "8.11.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://idontknow/todo.git"
+	}
+}
