@@ -1,7 +1,8 @@
-
+var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
 
+app.use( bodyParser.urlencoded({extended: false}))
 // --> 7)  Mount the Logger middleware here
 app.use((req,res,next)=>{
   console.log(req.method+" "+ req.path+" - "+req.ip);
@@ -62,10 +63,17 @@ app.get('/:word/echo',(req,res)=>{
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
 app.route('/name').get((req,res)=>{
-  const first =  req.query.first
-  const last = req.query.last
-  res.json({name: `${first} ${last}`})
+  const f =  req.query.first
+  const l = req.query.last
+  res.json({name: `${f} ${l}`})
 })
+app.post("/name", function(req, res) {
+  // Handle the data in the request
+  var string = req.body.first + " " + req.body.last;
+  res.json({ name: string });
+});
+
+app.use(bodyParser.json())
   
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
