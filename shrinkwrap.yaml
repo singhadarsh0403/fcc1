@@ -1,5 +1,8 @@
 dependencies:
+  body-parser: 1.19.0
+  cookie-parser: 1.4.5
   express: 4.17.1
+  fcc-express-bground: github.com/freeCodeCamp/fcc-express-bground-pkg/105588834ca467f887b99166244f1de62a84cdb8
 packages:
   /accepts/1.3.7:
     dependencies:
@@ -51,6 +54,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+  /cookie-parser/1.4.5:
+    dependencies:
+      cookie: 0.4.0
+      cookie-signature: 1.0.6
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-f13bPUj/gG/5mDr+xLmSxxDsB9DQiTIfhJS/sqjrmfAWiAN+x2O4i/XguTL9yDZ+/IFDanJ+5x7hC4CXT9Tdzw==
   /cookie-signature/1.0.6:
     dev: false
     resolution:
@@ -389,8 +401,17 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+  github.com/freeCodeCamp/fcc-express-bground-pkg/105588834ca467f887b99166244f1de62a84cdb8:
+    dev: false
+    name: fcc-express-bground
+    resolution:
+      tarball: 'https://codeload.github.com/freeCodeCamp/fcc-express-bground-pkg/tar.gz/105588834ca467f887b99166244f1de62a84cdb8'
+    version: 0.0.5
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  body-parser: ^1.15.2
+  cookie-parser: ^1.4.3
   express: ^4.14.0
+  fcc-express-bground: 'git+https://github.com/freeCodeCamp/fcc-express-bground-pkg.git'
