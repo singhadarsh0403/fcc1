@@ -3,7 +3,10 @@ var express = require('express');
 var app = express();
 
 // --> 7)  Mount the Logger middleware here
-
+app.use((req,res,next)=>{
+  console.log(req.method+" "+ req.path+" - "+req.ip);
+  next();
+})
 
 // --> 11)  Mount the body-parser middleware  here
 
@@ -22,13 +25,19 @@ app.get('/',(req,res)=>{
 
 /** 4) Serve static assets  */
 
-app.use((req,res)=>{
-  express.static('/public/style.css')
-})
+app.use(  express.static(__dirname+'/public'))
 
 /** 5) serve JSON on a specific route */
-
-
+var response = "Hello json"
+app.get('/json',(req,res)=>{
+  if(process.env.MESSAGE_STYLE=='uppercase')
+    {
+      res.json({"message": response.toUpperCase()})
+    }
+    else{
+      res.json({"message": response}) 
+    }
+})
 /** 6) Use the .env file to configure the app */
  
  
@@ -37,14 +46,26 @@ app.use((req,res)=>{
 
 
 /** 8) Chaining middleware. A Time server */
-
+app.get("/now",(req,res,next)=>{
+  req.t = new Date().toString()
+  next()
+},(req,res)=>{
+  res.send({"time":req.t})
+})
 
 /** 9)  Get input from client - Route parameters */
-
+app.get('/:word/echo',(req,res)=>{
+  const {word} = req.params
+  res.json({echo:word})
+})
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
-
+app.route('/name').get((req,res)=>{
+  const first =  req.query.first
+  const last = req.query.last
+  res.json({name: `${first} ${last}`})
+})
   
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
