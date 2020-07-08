@@ -9,16 +9,22 @@ var app = express();
 
 
 /** 1) Meet the node console. */
-
+console.log("Hello World");
 
 /** 2) A first working Express Server */
-
+const absolutePth = __dirname + '/views/index.html'
+app.get('/',(req,res)=>{
+  res.sendFile(absolutePth)
+})
 
 /** 3) Serve an HTML file */
 
 
 /** 4) Serve static assets  */
 
+app.use((req,res)=>{
+  express.static('/public/style.css')
+})
 
 /** 5) serve JSON on a specific route */
 
